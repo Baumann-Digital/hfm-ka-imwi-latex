@@ -1,0 +1,96 @@
+%Diese Datei erzeugt die gesamte Hausarbeit.
+%Dokumentklasse, die speziell an die Bedürfnisse des Institut mür Musikwissenschaft und Musikinforamtik der Hochschule für Musik Karlsruhe angepasst wurde.
+\documentclass[]{../Styles/HfM-KA-IMWI} 
+
+% Sprachpaket
+\usepackage[american,british,ngerman]{babel}
+% Sprachpakete 1. Deutsch 2. Englisch 3. USenglisch
+% Mögl. Optionen für Englisch: [british,UKenglish,USenglish,english,american]
+
+% Anführungszeichen %%Englisch: [babel, british]
+\usepackage[babel,german=guillemets]{csquotes}
+
+%Definition der Seitenränder und Sperrvermerke (Ausgelagert in Optionen zur Klasse)
+\Seitenraender
+\Sperrvermerke
+
+\begin{document}
+%Include erzeugt eine neue Seite mit dem Eingebundenen Inhalt
+\include{HfM-KA-IMWI-HA-Deckblatt}
+
+%To-Do-Liste (Wird bei Option "druckfreigabe" nicht angezeigt)
+\ToDoList
+
+\tableofcontents{\protect \thispagestyle{empty}}
+
+\newpage{}
+\setcounter{tocdepth}{2}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{scrheadings}
+
+%Textinhalt des Dokumentes. Beliebig erweiterbar durch weitere Dateien.
+% Benutzt mann \include{file} statt \input{file} wird für jeden include eine neue Seite Begonnen, egal wie viel Platz auf der Seite davor ist. Bei \input{file} wird die Seite normal weitergeführt. \include{file} eignet sich besser für Buch-Kapitel, \include{file} mehr für Artikel und Aufsätze.
+\begin{spacing}{1,5}
+
+\IfFileExists{HfM-KA-IMWI-HA-Vorwort}{\label{Vorwort}\input{HfM-KA-IMWI-HA-Vorwort}}{}
+\newpage
+\IfFileExists{HfM-KA-IMWI-HA-Kapitel_01}{\label{Kapitel-01}\input{HfM-KA-IMWI-HA-Kapitel_01}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Kapitel_02}{\label{Kapitel-02}\input{HfM-KA-IMWI-HA-Kapitel_02}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Kapitel_03}{\label{Kapitel-03}\input{HfM-KA-IMWI-HA-Kapitel_03}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Kapitel_04}{\label{Kapitel-04}\input{HfM-KA-IMWI-HA-Kapitel_04}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Kapitel_05}{\label{Kapitel-05}\input{HfM-KA-IMWI-HA-Kapitel_05}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Kapitel_06}{\label{Kapitel-06}\input{HfM-KA-IMWI-HA-Kapitel_06}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Kapitel_07}{\label{Kapitel-07}\input{HfM-KA-IMWI-HA-Kapitel_07}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Kapitel_08}{\label{Kapitel-08}\input{HfM-KA-IMWI-HA-Kapitel_08}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Kapitel_09}{\label{Kapitel-09}\input{HfM-KA-IMWI-HA-Kapitel_09}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Kapitel_10}{\label{Kapitel-10}\input{HfM-KA-IMWI-HA-Kapitel_10}}{}
+\end{spacing}
+
+\newpage
+\section{Literaturverzeichnis}
+\label{vz:Literatur}
+
+
+\printbibliography[heading=none]
+
+%Anhang zum vorliegenden Dokument.
+\begin{spacing}{1}
+\IfFileExists{HfM-KA-IMWI-HA-Anhang_01.tex}
+{\newpage
+	\section{Anhang}
+	\label{sec:Anhang}
+	\label{sec:Anhang-01}
+	\input{HfM-KA-IMWI-HA-Anhang_01}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Anhang_02.tex}
+{\newpage
+	\label{sec:Anhang-02}
+	\input{HfM-KA-IMWI-HA-Anhang_02}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Anhang_03.tex}
+{\newpage
+	\label{sec:Anhang-03}
+	\input{HfM-KA-IMWI-HA-Anhang_03}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Anhang_04.tex}
+{\newpage
+	\label{sec:Anhang-04}
+	\input{HfM-KA-IMWI-HA-Anhang_04}}{}
+\IfFileExists{HfM-KA-IMWI-HA-Anhang_05.tex}
+{\newpage
+	\label{sec:Anhang-05}
+	\input{HfM-KA-IMWI-HA-Anhang_05}}{}
+\end{spacing}
+
+\IfFileExists{../PDF-Anhaenge/HfM-KA-IMWI-HA-PDF-Anhang_01.pdf}
+{\label{sec:Anhang-PDF-01}\include{HfM-KA-IMWI-HA-PDF-Anhang_01.pdf}}{}
+\IfFileExists{../PDF-Anhaenge/HfM-KA-IMWI-HA-PDF-Anhang_02.pdf}
+{\label{sec:Anhang-PDF-02}\include{HfM-KA-IMWI-HA-PDF-Anhang_02.pdf}}{}
+\IfFileExists{../PDF-Anhaenge/HfM-KA-IMWI-HA-PDF-Anhang_03.pdf}
+{\label{sec:Anhang-PDF-03}\include{HfM-KA-IMWI-HA-PDF-Anhang_03.pdf}}{}
+\IfFileExists{../PDF-Anhaenge/HfM-KA-IMWI-HA-PDF-Anhang_04.pdf}
+{\label{sec:Anhang-PDF-04}\include{HfM-KA-IMWI-HA-PDF-Anhang_04.pdf}}{}
+\IfFileExists{../PDF-Anhaenge/HfM-KA-IMWI-HA-PDF-Anhang_05.pdf}
+{\label{sec:Anhang-PDF-05}\include{HfM-KA-IMWI-HA-PDF-Anhang-05.pdf}}{}
+
+\include{HfM-KA-IMWI-HA-Selbststaendigkeitserklaerung}
+
+\end{document}

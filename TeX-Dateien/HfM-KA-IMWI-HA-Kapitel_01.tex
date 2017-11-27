@@ -1,0 +1,42 @@
+%Kapitel 1
+
+\section{Das erste Kapitel}
+
+\begin{spacing}{1}
+\begin{itemize}
+	\item \info{Unterstreicht ein Wort und führt zur Sprechblase am Rand} Notizen zu Kapitel 1
+\begin{itemize}
+	
+\item Hier steht Text\autocite[Vgl.][55\psqq]{Buch1}
+\item \enquote{Hier steht noch [...] mehr Text}\autocites(Auslassung: \verfasser)[2]{Buch1}
+
+\end{itemize}
+\end{itemize}
+\end{spacing}
+
+Da wir Texte lieben und vor allem auch Fußnoten\autocite[1-X]{biblatex1} hier noch eine. 
+
+
+Hier ist eine weitere\unsicher[fancyline, author=Korrektor]{Hellgrauer Pfeil direkt zu der Stelle, auf die sich die Anmerkung Bezieht} Anmerkung notwendig.
+
+\blindtext
+
+\verbessern{dieser Teil ist noch zu schlecht}Bla bla blaaaa
+\newline
+
+Was es hier noch Anzumerken gibt ist die schöne Lösung nicht von Forte oder \textit{piano} sprechen zu müssen, sondern die Standardsymbole \dynmark{f} und \dynmark{p} im Fließtext verwenden zu können.
+Das sieht gleich viel professioneller aus, vor allem bei moderneren Angaben wie \dynmark{sfmf}.\info{Dieser Befehl löscht sich nicht automatisch wenn man die Option "print" aktiviert. Daher wird dieser recht obsolete Befehl beim nächsten Update vsl. Entfernt.}\perfekt
+
+\blindtext
+
+\begin{center}
+\missingfigure[figwidth=7.2cm]{Hier ist Platz für ein Bild \ldots}
+\end{center}
+
+\blindtext
+
+\textsl{Nun noch ein Beispiel für das Blockzitat:}
+
+\begin{Blockzitat}
+	\blindtext\autocite{Buch2}
+\end{Blockzitat}
