@@ -80,16 +80,16 @@
 	\input{HfM-KA-IMWI-HA-Anhang_05}}{}
 \end{spacing}
 
-\IfFileExists{../PDF-Anhaenge/HfM-KA-IMWI-HA-PDF-Anhang_01.pdf}
-{\label{sec:Anhang-PDF-01}\include{HfM-KA-IMWI-HA-PDF-Anhang_01.pdf}}{}
-\IfFileExists{../PDF-Anhaenge/HfM-KA-IMWI-HA-PDF-Anhang_02.pdf}
-{\label{sec:Anhang-PDF-02}\include{HfM-KA-IMWI-HA-PDF-Anhang_02.pdf}}{}
-\IfFileExists{../PDF-Anhaenge/HfM-KA-IMWI-HA-PDF-Anhang_03.pdf}
-{\label{sec:Anhang-PDF-03}\include{HfM-KA-IMWI-HA-PDF-Anhang_03.pdf}}{}
-\IfFileExists{../PDF-Anhaenge/HfM-KA-IMWI-HA-PDF-Anhang_04.pdf}
-{\label{sec:Anhang-PDF-04}\include{HfM-KA-IMWI-HA-PDF-Anhang_04.pdf}}{}
-\IfFileExists{../PDF-Anhaenge/HfM-KA-IMWI-HA-PDF-Anhang_05.pdf}
-{\label{sec:Anhang-PDF-05}\include{HfM-KA-IMWI-HA-PDF-Anhang-05.pdf}}{}
+\IfFileExists{../HfM-KA-IMWI-HA-PDF-Anhang_01.pdf}{
+\includepdf{../HfM-KA-IMWI-HA-PDF-Anhang_01.pdf}}{}
+\IfFileExists{../HfM-KA-IMWI-HA-PDF-Anhang_02.pdf}
+{\label{sec:Anhang-PDF-02}\includepdf{../HfM-KA-IMWI-HA-PDF-Anhang_02.pdf}}{}
+\IfFileExists{../HfM-KA-IMWI-HA-PDF-Anhang_03.pdf}
+{\label{sec:Anhang-PDF-03}\includepdf{../HfM-KA-IMWI-HA-PDF-Anhang_03.pdf}}{}
+\IfFileExists{../HfM-KA-IMWI-HA-PDF-Anhang_04.pdf}
+{\label{sec:Anhang-PDF-04}\includepdf{../HfM-KA-IMWI-HA-PDF-Anhang_04.pdf}}{}
+\IfFileExists{../HfM-KA-IMWI-HA-PDF-Anhang_05.pdf}
+{\label{sec:Anhang-PDF-05}\includepdf{../HfM-KA-IMWI-HA-PDF-Anhang-05.pdf}}{}
 
 \include{HfM-KA-IMWI-HA-Selbststaendigkeitserklaerung}
 
