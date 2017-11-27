@@ -1,0 +1,75 @@
+%% Basic package of tools for seminar papers using LaTeX at University of Music Karlsruhe. Institute for Musicology and Musicinformatics %%
+
+%%%%%% Anmerkungs-Befehle. Wird vmtl. beim nächsten Update gelöscht. %%%%%%
+
+\newcommand{\vage}{\textcolor{red}{vage!}}
+\newcommand{\nachschlagen}{\colorbox{yellow}{Nachschlagen!}}
+\newcommand{\perfekt}{\colorbox{green}{Sehr gut!}}
+
+%% Ausschalten der oben definierten Befehle für die Option "print" %%
+\newcommand{\DoNotPrint}
+{
+	\renewcommand{\vage}[1]{}
+	\renewcommand{\nachschlagen}[1]{}
+	\renewcommand{\perfekt}[1]{}
+}
+%%%%%% Anmerkungs-Befehle (Bunte Felder) %%%%%%
+
+\usepackage{xargs}  % Erlaubt mehr als ein optionales Parameter in neuen Kommandos
+
+
+%%%% ToDo-Anmerkungen. Felder, Farben und Bezeichnungen %%%%
+
+\usepackage[
+colorinlistoftodos,
+prependcaption,
+textsize=tiny,
+german
+]{todonotes}
+	
+\newcommandx{\unsicher}[2][1=]{
+	\todonum[
+	linecolor=blue,
+	backgroundcolor=blue!25,
+	bordercolor=blue,#1]{#2}
+	}
+
+\newcommandx{\aendern}[2][1=]{
+	\todonum[
+	linecolor=yellow,
+	backgroundcolor=yellow!25,
+	bordercolor=yellow,#1]{#2}
+	}
+
+\newcommandx{\info}[2][1=]{
+	\todonum[
+	linecolor=green,
+	backgroundcolor=green!25,
+	bordercolor=green,#1]{#2}
+	}
+	
+\newcommandx{\verbessern}[2][1=]{
+	\todonum[
+	linecolor=red,
+	backgroundcolor=red!25,
+	bordercolor=red,#1]{#2}
+	}
+	
+\newcommandx{\unsichtbar}[2][1=]{
+	\todonum[
+	disable,#1]{#2}
+	}
+
+%% Definiert die Nummerierung der Anmerkungen %%
+\newcounter{todocounter}
+ \newcommand{\todonum}[2][]
+ {\stepcounter{todocounter}\todo[#1]{\thetodocounter: #2}}
+
+ 
+ %%%% Sorgt dafür, dass keine Nummerierung des Abschnittes erfolgt, es aber trotzdem im Inhaltsverzeichnis aufgeführt wird. (Vorwort) %%%%
+ \newcommand{\mysection}[2]{
+ 	\setcounter{section}{#1}
+ 	\setcounter{section}{0}
+ 	\section*{#2}
+ 	\addcontentsline{toc}{section}{#2}
+ }

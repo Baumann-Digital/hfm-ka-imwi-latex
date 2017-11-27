@@ -1,0 +1,51 @@
+%% Basic package of variables for seminar papers using LaTeX at University of Music Karlsruhe. Institute for Musicology and Musicinforrmatics %%
+
+%%%%% Neue (selbstdefinierbare) Kommandos/Variablen zur Arbeit mit Texten %%%%%
+
+\newcommand*{\Werk}[1]{\textsl{#1}}
+\newcommand*{\Person}[1]{#1} %\textsc{#1}
+\newcommand*{\Institution}[1]{\textsc{#1}}
+\newcommand*{\Quelle}[1]{\Werk}
+\newcommand*{\Vortragsbez}[1]{\textit{#1}}
+\newcommand*{\Kapitel}[1]{\textsl{\nameref{#1}}}
+
+\newcommand*{\WoO}{Werk ohne Opuszahl\,}
+\newcommand*{\WoOs}{Werke ohne Opuszahl\,}
+\newcommand*{\BLB}{\Institution{Badische Landesbibliothek}\,}
+
+
+%%%%% Kommando \dynmark{} erlaubt Dynamik-Zeichen im Fließtext %%%%%
+\newcommand{\muskern}{\kern-.15ex } % what MusiXTeX does
+
+\makeatletter
+\newcommand\dynmark[1]{{\normalfont\bfseries\itshape
+		\@tfor\next:=#1\do{\put@muskern\next}\/}}
+\newcommand{\put@muskern}{\let\put@muskern\muskern}
+\makeatother
+
+%%%%% Neue (selbstdefinierbare) Umgebungen zur Formatierung von Texten %%%%%
+
+\newenvironment*{Blockzitat}
+{
+	\vspace*{1em}
+	\setlength{\parindent}{0pt}
+	\small
+	\leftskip4em
+	\rightskip \leftskip
+	\begin{spacing}{1}
+	}
+	{
+	\end{spacing}
+	\vspace*{1em}
+}
+
+\newenvironment*{Aufzählung}
+{
+	%\vspace*{0em}
+	\begin{itemize}
+	\setlength{\itemsep}{-0.7em}
+	}
+	{
+	\end{itemize}
+	%\vspace*{0em}
+}

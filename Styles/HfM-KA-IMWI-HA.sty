@@ -1,0 +1,121 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{HfM-KA-IMWI-HA}[2017/01/01 Basic stylepackage for seminar papers using LaTeX at University of Music Karlsruhe. Institute for Musicology and Musicinformatics]
+
+\RequirePackage[style=footnote-dw, % Zitierstil.
+sorting=nty, % Sortierschlüssel: Autor, Titel, Jahr.
+block=space, % Abstand zwischen abgerufenen Feldern.
+pagetracker=true, % Ebd. erscheint nie bei erster Fußnote auf Seite.
+citetracker=true, % Prüft ob der Titel bereits zitiert wurde. Erzeugt ggf. Kurztitel.
+ibidtracker=constrict, % Ebd. bei direkter Verwendung von gleichem Autor.
+idemtracker=constrict, % Ders. bei direkter Verwendung von gleicher Quelle.
+idembib=false, % Schaltet folgende Option ein.
+idembibformat=idem, % Ders. statt Platzhalter ("–") im Literaturverzeichnis.
+ibidemfont=normal, % Formatierung für Ebd.
+idemfont=normal, % Formatierung für Ders.
+namefont=smallcaps, % Formatierung für Autor (Nachname).
+firstnamefont=smallcaps, % Formatierung für Autor (Vorname).
+isbn=false, %  ISBN wird nicht angezeigt/untedrückt.
+url=false, %  URL wird nicht angezeigt/unterdrückt.
+autocite=footnote, % Definiton des Autocite-Befehls.
+backend=biber % "Bibliographiermaschine".
+]{biblatex}
+
+\bibliography{../Bibliographie/HfM-KA-IMWI-HA-Bibliographie} % Ort an der die Bibliographie hinterlegt ist.
+
+\renewcommand*{\multinamedelim}{\slash}
+ \renewcommand*{\finalnamedelim}{%
+   \ifnum\value{liststop}>2 \finalandcomma\fi
+   \slash}
+ \renewcommand*{\revsdnamedelim}{\slash}
+ \renewcommand*{\bibmultinamedelim}{\slash}
+ \renewcommand*{\bibfinalnamedelim}{%
+   \ifnum\value{liststop}>2 \finalandcomma\fi
+   \slash}%
+ \renewcommand*{\bibrevsdnamedelim}{\slash}
+ \renewcommand*{\citemultinamedelim}{\slash}
+ \renewcommand*{\citefinalnamedelim}{\slash}
+ \renewcommand*{\citerevsdnamedelim}{\slash}
+
+\RequirePackage{bibentry} %Zusatzoptionen für das Bibliographieren.
+
+\RequirePackage{scrpage2} % Erlaubt erweiterte Kopf und Fußzeilen.
+\pagestyle{scrheadings} % Aktiviert erweiterte Kopf und Fußzeilen.
+\clearscrheadfoot % Löscht sämtliche Inhalte von Kopf und Fußzeile, um diese sauber neu definieren zu können.
+
+%\RequirePackage[ngerman=ngerman-x-latest]{hyphsubst}
+
+%% 'Layout' Optionen
+
+% Standard-Option "Entwurf-Ansucht"
+\DeclareOption{first}{
+	\newcommand*{\Seitenraender}{\geometry{top=30mm, left=30mm, right=30mm, bottom=30mm, headsep=10mm, footskip=12mm}}
+	\newcommand*{\ToDoList}{
+		\newpage
+		\thispagestyle{plain}
+		\listoftodos
+		\newpage}
+	\newcommand*{\Sperrvermerke}{\ihead{Entwurf}
+	\ohead{\verfasser}
+	\ifoot{Kompiliert am: \today}
+	\ofoot{Seite \pagemark}}
+}
+
+% Option: "Korrekturabzug". Unterschied: Kopfzeile und Ränder (mehr Platz für Korrekturanmerkungen).
+\DeclareOption{correct}{
+	\renewcommand*{\Seitenraender}{\geometry{top=30mm, left=10mm, right=50mm, bottom=30mm, headsep=10mm, footskip=12mm}}
+	\renewcommand*{\ToDoList}{
+		\newpage
+		\thispagestyle{plain}
+		\listoftodos
+		\newpage}
+	\renewcommand*{\Sperrvermerke}{\ihead{Korrekturabzug}
+		\ohead{\verfasser}
+		\ifoot{Kompiliert am: \today}
+		\ofoot{Seite \pagemark}}
+}
+
+% Option "Druckfreigabe". End-Layout: Deaktiviert bzw. läd nicht einige Dinge, die im Druck nicht auftauchen dürfen! (Bspw. ToDo-Liste, Sperrvermerke).
+\DeclareOption{print}{
+	\renewcommand*{\Seitenraender}{\geometry{top=30mm, left=30mm, right=30mm, bottom=30mm, headsep=10mm, footskip=12mm}}
+	\renewcommand*{\ToDoList}{\newpage}
+	\renewcommand*{\Sperrvermerke}{
+	\ihead{}
+	\chead{\pagemark}
+	\ohead{}
+	\ifoot{}
+	\cfoot{}
+	\ofoot{}}
+
+\renewcommandx{\unsicher}[2][1=]{
+	\todonum[
+disable,#1]{#2}
+}
+\renewcommandx{\aendern}[2][1=]{
+	\todonum[
+disable,#1]{#2}
+}
+\renewcommandx{\info}[2][1=]{
+	\todonum[
+	disable,#1]{#2}
+}
+\renewcommandx{\verbessern}[2][1=]{
+	\todonum[
+	disable,#1]{#2}
+}
+\DoNotPrint
+}
+
+
+%%%%% Einstellungen Layout-Bibliographie %%%%%
+\setlength{\bibitemsep}{1em}     % Abstand zwischen den Literaturangaben.
+\setlength{\bibhang}{2em}        % Einzug nach jeweils erster Zeile.
+
+%%%%% Anpassung der Fußnote (Abstand zw. Zahl und Text) %%%%%
+\deffootnote{1.2em}{1em}{\textsuperscript{\thefootnotemark\ }}
+
+
+\ExecuteOptions{first} % Definition der Standard-Option (falls keine Angabe gesetzt ist).
+
+\ProcessOptions\relax
+
+\endinput
