@@ -1,0 +1,53 @@
+%Kapitel 1
+
+\section{Aufbau der \LaTeX-Infrastruktur}
+\label{sec:AufbauInfrastruktur}
+
+\subsection{Die Ordnerstruktur}
+\label{subsec:Ordnerstruktur}
+\begin{itemize}
+\item Bibliographie: Dieser Ordner enthält die Bibliographie, die der Arbeit zugrunde liegt. In der Regel ist dies eine einzige Datei, aber auch mehrere Dateien sind denkbar. Möchte man ein unterteiltes Literaturverzeichnis einsetzen, kann dies auch über eine \doc{.bib}-Datei geschehen; mehrere Bibliographien sind dafür nicht nötig (s. Bib-Lit.)
+\item Dokumentation: Enthält die TeX-Dateien zur Erzeugung dieser Dokumentation. Allerdings nur auf dem Branch \enquote{Dokumentation}.
+\item Grafiken: Hier ist der Ort, an dem das Logo für die Titelseite hinterlegt ist. Sinnvoll ist es hier alle die Arbeit betreffenden Bilder zu hinterlegen. Diese können dann ganz einfach über relative Links Eingebunden werden. Selbstverständlich können die Bilder (außer dem Logo) an jedem beliebigen Ort liegen, jedoch erhält man mehr Übersichtlichkeit und Ordnung, wenn man alle an einem Ort sammelt.
+\item Interna: Dieser Ordner enthält den Link zum Repository und ist nur vorläufig. Sobald diese Dokumentation fertiggestellt ist wird diese alles notwendige enthalten und dieser Ordner verschwinden.
+\item Literatur: Eine der wichtigsten Anlaufstellen zur Erweiterung von \LaTeX-Umgebungen ist das Internet. Wichtige, umfangreiche oder schwer zu findende Dokumentationen sind hier als PDF-Dokument hinterlegt, damit die Suche danach nicht zeitlich aufhält.
+\item PDF-Anhänge: müssen hier hinterlegt werden. Wichtig ist auch die Dateibenennung (s. \ref{subsec:TeXDateienPDFAnhänge} \nameref{subsec:TeXDateienPDFAnhänge})!
+\item Styles: Der Speicherort für die zusätzlichen Pakete, die Werkzeuge, Variablen und Metadaten enthalten.
+\item \TeX-Dateien: Hier findet sich schließlich der flexibelste Ort, an dem (neben zahlreichen entstehenden Hilfsdateien) auch alle mit Text zu füllenden Dateien liegen müssen, die später von der Hauptdatei (\doc{HfM-KA-IMWI-HA.tex}) zum Fertigen Dokument verarbeitet werden.
+
+\end{itemize}
+, Grafiken, Literatur.
+
+\subsection{Die Dokumentenklasse (\textit{Wrapper}-Klasse)}
+\label{subsec:Dokumentklasse}
+Das Dokument \doc{HfM-KA-IMWI.cls} beinhaltet die Informationen, welche die Dokumentklasse definieren.
+Hierzu gehören die Grundklasse, die geladen wird, wie auch die zu verwendenden Grundeinstellungen.
+Weiter werden hier bereits essentielle Pakete geladen und die verschiedenen Optionen der Klasse definiert.
+
+Die Datei beginnt mit einer recht einfachen Definition, nämlich mit der Bekanntmachung, welches \LaTeX-Format benutzt werden soll (\com{NeedsTeXFormat\{LaTeX2e\}}) und dass hier eine Klasse angeboten wird (\com{ProvidesClass}).
+Nach einigen Grundeinstellungen wird dann die Grundklasse (\com{LoadClass[a4paper]{scrartcl}}) geladen.
+Hier stellt sich natürlich die Frage warum habe ich die \enquote{kleine} Klasse ausgewählt und nicht die für größere schriftliche Arbeiten. Für den Zweck, den ich im Sinn hatte, als ich diese Infrastruktur schrieb, wäre die Klasse \com{scrrprt} eigentlich die Standardwahl gewesen.
+Der Grund dafür ist recht simpel: Ich arbeitete bisher meistens mit der \com{scrartcl}-Klasse und hatte auch schon ein eigenes Deckblatt mit Titelei geschrieben, sodass diese Funktionen nicht mehr notwendig waren.
+Selbstverständlich denke ich darüber nach, die Infrastruktur auf die andere Klasse umzustellen, da das jedoch erfahrungsgemäß nicht Eins-zu-eins funktioniert, wird das aus Zeitgründen noch etwas warten müssen.
+
+Dinge, die immer zu beginn eines Dokumentes geladen werden sollen, folgen sogleich.
+Die Zeichencodierung und der Engraver werden direkt in der Klasse geladen.
+Im Gegensatz hierzu finden sich die Sprachpakete in der \TeX-Datei, die die Arbeit erzeugt, da dies Einstellungen sind, die unter Umständen angepasst werden müssen.
+Ob der Grund hierfür die individuelle Anpassung, die Umstellung auf eine andere Hauptsprache oder einfach durch die Vorgabe von Dozenten ist nicht wichtig. Dennoch  treten diese Gründe oft genug auf, dass es sinnvoll erschien die Sprachpakete \enquote{offen} liegen zu lassen und nicht in der Infrastruktur zu verstecken.
+
+Schließlich werden die Style-Dateien geladen, die im wesentlichen Pakete darstellen.
+Der Unterschied zu den eigentlichen Paketen ist jedoch, dass diese individuell für diese Infrastruktur zusammengebaut wurden und nicht von CTAN stammen.
+
+Pakete, die nahezu immer gebraucht werden, werden noch in der Klasse aufgerufen, damit die aus ihnen resultierenden Grundbefehle immer verfügbar sind.
+
+\subsection{Die Style-Dateien}
+\label{subsec:StyleDateien}
+
+\subsection{Die \TeX-Dateien}
+\label{subsec:TeXDateien}
+\subsubsection{Erweiterungen}
+\label{subsec:TeXDateienErweiterungen}
+\subsubsection{Selbst geschriebene Anhänge}
+\label{subsec:TeXDateienEigeneAnhänge}
+\subsubsection{PDF-Anhänge}
+\label{subsec:TeXDateienPDFAnhänge}
